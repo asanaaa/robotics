@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <node pkg="turtlesim" exec="turtlesim_node" name="sim" namespace="turtlesim1" />
+  <node pkg="turtlesim" exec="turtlesim_node" name="sim" namespace="turtlesim2" />
+  <node pkg="turtlesim" exec="turtlesim_node" name="sim" namespace="turtlesim3" />
+  <node pkg="turtlesim" exec="mimic" name="mimic" namespace="mimic1">
+    <remap from="/mimic1/input/pose" to="/turtlesim1/turtle1/pose" />
+    <remap from="/mimic1/output/cmd_vel" to="/turtlesim2/turtle1/cmd_vel" />
+  </node>
+  <node pkg="turtlesim" exec="mimic" name="mimic" namespace="mimic2">
+    <remap from="/mimic2/input/pose" to="/turtlesim2/turtle1/pose" />
+    <remap from="/mimic2/output/cmd_vel" to="/turtlesim3/turtle1/cmd_vel" />
+  </node>
+</launch>
